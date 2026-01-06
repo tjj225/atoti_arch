@@ -1,0 +1,5 @@
+{
+  "name": "Atoti Architecture Explorer",
+  "description": "An interactive, high-signal visualization of the Atoti analytical engine architecture, demonstrating the flow from raw data sources to sub-second real-time analytics.",
+  "requestFramePermissions": []
+}
