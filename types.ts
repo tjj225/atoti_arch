@@ -17,6 +17,7 @@ export interface ArchitectureNode {
   emphasis: 'low' | 'medium' | 'hero';
   items?: string[];
   subLabel?: string;
+  heroBadge?: string;
 }
 
 export interface DiagramState {

@@ -71,8 +71,8 @@ const ArchitectureNodeComponent: React.FC<Props> = ({
       )}
 
       {isHero && (
-        <div className="absolute -bottom-2 -right-2 bg-blue-600 dark:bg-blue-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase">
-          Hero Zone
+        <div className="absolute -bottom-2 -right-2 bg-blue-600 dark:bg-blue-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded uppercase shadow-sm">
+          {node.heroBadge || 'Core Engine'}
         </div>
       )}
     </button>

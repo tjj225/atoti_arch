@@ -21,8 +21,9 @@ export const ARCHITECTURE_DATA: Record<string, ArchitectureNode> = {
   },
   'engine-store': {
     id: 'engine-store',
-    label: 'Pre-Aggregated Store',
+    label: 'Aggregate Store',
     emphasis: 'hero',
+    heroBadge: 'In-Memory',
     description: 'An optimized in-memory storage layer that keeps multidimensional aggregates ready for instant access.',
     whyItMatters: 'Eliminates the need for massive on-the-fly table scans, enabling sub-second response times even for complex queries.',
     items: ['In-Memory MVCC Storage', 'Near Real-Time Aggregation']
@@ -31,6 +32,7 @@ export const ARCHITECTURE_DATA: Record<string, ArchitectureNode> = {
     id: 'engine-calc',
     label: 'Aggregation & Calculation',
     emphasis: 'hero',
+    heroBadge: 'Compute',
     description: 'The engine that computes complex business logic on top of the aggregated data.',
     whyItMatters: 'Allows for non-linear calculations (like VaR or complex ratios) that are hard to express in standard SQL.',
     items: ['On-the-fly', 'Complex and numerous hierarchies', 'Calculated measures']
@@ -39,6 +41,7 @@ export const ARCHITECTURE_DATA: Record<string, ArchitectureNode> = {
     id: 'engine-query',
     label: 'Query Engine',
     emphasis: 'hero',
+    heroBadge: 'Sub-Second',
     description: 'The entry point for analytical queries, optimized for high concurrency and low latency.',
     whyItMatters: 'Serves thousands of concurrent users with consistent performance, regardless of dataset complexity.',
     items: ['Sub-second queries', 'Concurrent users', 'Versioned']

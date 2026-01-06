@@ -4,7 +4,7 @@ import { ARCHITECTURE_DATA } from './constants';
 import { NodeId, DiagramState } from './types';
 import ArchitectureNodeComponent from './components/ArchitectureNode';
 import SidePanel from './components/SidePanel';
-import { ArrowRight, Share2, Github, ExternalLink, ShieldCheck, Sun, Moon, Download, Image as ImageIcon, FileCode } from 'lucide-react';
+import { ArrowRight, Share2, Github, ExternalLink, ShieldCheck, Sun, Moon, Image as ImageIcon, FileCode, ArrowDown } from 'lucide-react';
 import * as htmlToImage from 'html-to-image';
 
 const App: React.FC = () => {
@@ -107,9 +107,11 @@ const App: React.FC = () => {
           
           <div ref={diagramRef} className="relative flex items-center gap-8 min-w-max p-12 rounded-3xl transition-colors duration-300">
             
-            {/* 1. Data Sources */}
-            <div className="flex flex-col gap-6">
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] text-center mb-2">Sources</div>
+            {/* 1. Combined Ingestion Block (Left) */}
+            <div className="flex flex-col items-center gap-4 p-6 bg-slate-100/50 dark:bg-slate-900/30 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-slate-900 px-4 py-1 rounded-full border border-slate-200 dark:border-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap shadow-sm">
+                Data Foundation
+              </div>
               <ArchitectureNodeComponent 
                 node={ARCHITECTURE_DATA['data-sources']}
                 isSelected={state.selectedNode === 'data-sources'}
@@ -118,13 +120,7 @@ const App: React.FC = () => {
                 onMouseEnter={() => handleMouseEnter('data-sources')}
                 onMouseLeave={handleMouseLeave}
               />
-            </div>
-
-            <ArrowRight className="w-6 h-6 text-slate-300 dark:text-slate-800" />
-
-            {/* 2. Ingestion & Modeling */}
-            <div className="flex flex-col gap-6">
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] text-center mb-2">Prep</div>
+              <ArrowDown className="w-4 h-4 text-slate-300 dark:text-slate-700" />
               <ArchitectureNodeComponent 
                 node={ARCHITECTURE_DATA['modeling']}
                 isSelected={state.selectedNode === 'modeling'}
@@ -137,13 +133,12 @@ const App: React.FC = () => {
 
             <ArrowRight className="w-6 h-6 text-slate-400 dark:text-slate-700" />
 
-            {/* 3. ActivePivot Engine (Hero Zone) */}
+            {/* 2. ActivePivot Engine (Center Hero) */}
             <div className="flex flex-row items-stretch gap-8 p-8 bg-blue-50/50 dark:bg-blue-900/10 rounded-3xl border-2 border-dashed border-blue-100 dark:border-blue-900/30 relative shadow-sm transition-colors duration-300">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-slate-900 px-4 py-1 rounded-full border border-blue-200 dark:border-blue-900 text-[10px] font-bold text-blue-500 dark:text-blue-400 uppercase tracking-[0.2em] whitespace-nowrap shadow-sm z-30 transition-colors duration-300">
                 ActivePivot Engine
               </div>
               
-              {/* Internal Engine Stack */}
               <div className="grid grid-cols-1 gap-4">
                 <ArchitectureNodeComponent 
                   node={ARCHITECTURE_DATA['engine-store']}
@@ -171,10 +166,8 @@ const App: React.FC = () => {
                 />
               </div>
 
-              {/* Internal Vertical Divider */}
               <div className="w-[1px] bg-blue-200/50 dark:bg-blue-800/30 mx-2" />
 
-              {/* Security & Governance (Slim vertical strip) */}
               <div className="flex flex-col items-center">
                 <button
                   onClick={() => handleNodeClick('security')}
@@ -200,32 +193,22 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-center gap-2">
-               <ArrowRight className="w-6 h-6 text-slate-400 dark:text-slate-700" />
-               <div className="text-[8px] font-bold text-blue-400 dark:text-blue-600 uppercase">Sub-Second</div>
-            </div>
+            <ArrowRight className="w-6 h-6 text-slate-400 dark:text-slate-700" />
 
-            {/* 4. Hybrid Query */}
-            <div className="flex flex-col gap-6">
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] text-center mb-2">Unified Access</div>
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                <ArchitectureNodeComponent 
-                  node={ARCHITECTURE_DATA['hybrid-query']}
-                  isSelected={state.selectedNode === 'hybrid-query'}
-                  isHovered={state.hoveredNode === 'hybrid-query'}
-                  onClick={() => handleNodeClick('hybrid-query')}
-                  onMouseEnter={() => handleMouseEnter('hybrid-query')}
-                  onMouseLeave={handleMouseLeave}
-                />
+            {/* 3. Combined Consumption Block (Right) */}
+            <div className="flex flex-col items-center gap-4 p-6 bg-slate-100/50 dark:bg-slate-900/30 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white dark:bg-slate-900 px-4 py-1 rounded-full border border-slate-200 dark:border-slate-800 text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] whitespace-nowrap shadow-sm">
+                Access & Insights
               </div>
-            </div>
-
-            <ArrowRight className="w-6 h-6 text-slate-300 dark:text-slate-800" />
-
-            {/* 5. Consumption */}
-            <div className="flex flex-col gap-6">
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-[0.2em] text-center mb-2">Insights</div>
+              <ArchitectureNodeComponent 
+                node={ARCHITECTURE_DATA['hybrid-query']}
+                isSelected={state.selectedNode === 'hybrid-query'}
+                isHovered={state.hoveredNode === 'hybrid-query'}
+                onClick={() => handleNodeClick('hybrid-query')}
+                onMouseEnter={() => handleMouseEnter('hybrid-query')}
+                onMouseLeave={handleMouseLeave}
+              />
+              <ArrowDown className="w-4 h-4 text-slate-300 dark:text-slate-700" />
               <ArchitectureNodeComponent 
                 node={ARCHITECTURE_DATA['consumption']}
                 isSelected={state.selectedNode === 'consumption'}
